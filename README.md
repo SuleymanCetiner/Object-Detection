@@ -1,21 +1,16 @@
-# Object-Detection With YOLO
+# YOLOV3_object_detection
+Using YOLOV3 to detect, classify, and label the objects.
 
-As you know,YOLO is a famous and common type of architecture for object detection.
+<ul>
+  <li>At first, we need to load the cnn.</li>
+  <li>Convert each frame read from camera into blob type because cnn can only handle blob type images.</li>
+  <li>Set the converted blob type image as an input to the network.</li>
+  <li>Now that we have provided the input we require an output.</li>
+  <li>There are three out puts for a single detected objects.</li>
+  <li>Find the name of the output layers to find the outputs of the three layers.</li>
+  <li>Compute bounding box coordinates, class name, and confidence fo the detected object.</li>
+  <li>Draw rectangle, put label and confidence over the detected object on the frame.</li>
+</ul>
+<img src="i1.png" width=900 height=500>
 
-To be reference and clue, yolo architecture is shown below :
-
-
-![YOLOv3-prediction-results-1060x876 (2)](https://user-images.githubusercontent.com/38746955/230675502-129889d6-1306-4abd-8d4c-4738cdde26c5.png)
-
-At the beginning, we set the class names.
-
-After that, we decide the architecture.
-
-As third,we collect dataset.
-
-For fourth,we train the model and save the file.
-
-Lastly,we test the model for real-objects.
-
-
-![indir](https://user-images.githubusercontent.com/38746955/230675702-c06e3237-6e76-4d3a-b4e4-6f40aa2100a1.jpg)
+<b>Look at the manual provided in this repo for detail explanation.</b>

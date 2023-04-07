@@ -1,0 +1,28 @@
+1) Load the CNN by:"cv2.dnn.readNetFromDarknet("yolov3.cfg","yolov3.weights")"
+2) Now convert the image into blob type because the cnn can only process blob type image.
+   blob = cv2.dnn.blobFromImage("frame")
+3) Now we have to feed the blob into the cnn:
+   net.setInput("blob")
+4) Now that we have provided the input into the cnn we expect output from the cnn.
+5) And there are three output given by the cnn. i.e. 3 prediction for each object.
+6) So we have to find the name of the three output layers so that we can get their outputs.
+7) Find the name of all the layers of the cnn by:
+   layer_names = net.getLayerNames()
+   output_layer_coordinates = net.getUnconnectedOutLayers()
+   # THIS WILL GIVE YOU THE COORDINATES OF ALL THREE OUTPUT LAYERS.
+8) Now the coordinates will be helpful as index to find the names of 3 output layers from
+   layers_names list.
+   out_layers = [layers_names[i[0]-1] for i in net.getUnconnectedOutLayers()]
+   print(out_layers)
+   ['yolo_82', 'yolo_94', 'yolo_106']  # NAMES OF OUTPUT LAYERS
+9) Now to get the output:
+   outputs = net.forward(out_layers)
+   print("Outputs = ",len(outputs))  => Result Outputs =  3 in the form of [[List 1],[List 2],[List 3]]
+10) List 1 = (507, 85) = 507 rows, 85 columns
+    List 2 = (2028, 85) = 2028 rows, 85 columns
+    List 3 = (8112, 85) = 8112 rows, 85 columns
+    85 = [x,y,w,h,c1,c2,c3,...............,c85]
+11) In each list we do the detection so we have one prediction from each 3 list.
+12) To avoid the overlapping of the bounding box perform NMS operation.
+13) Finally draw a rectangle and put some text on the bouding boxes.
+
